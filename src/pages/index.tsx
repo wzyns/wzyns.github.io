@@ -1,5 +1,11 @@
+import Layout from "../components/layout";
+
 export default function IndexPage() {
-  return <div>Hello, world!</div>;
+  return (
+    <Layout>
+      <div>Hello, world!</div>
+    </Layout>
+  );
 }
 
 export function Head() {
