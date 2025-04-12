@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import Profile from "../components/profile";
 import PostList from "../components/post-list";
 
-export default function Home({ data }: { data: any }) {
+export default function MainPage({ data }: { data: any }) {
   const posts = data.allMarkdownRemark.nodes;
   return (
     <Layout>
@@ -11,10 +11,6 @@ export default function Home({ data }: { data: any }) {
       <PostList posts={posts} />
     </Layout>
   );
-}
-
-export function Head() {
-  return <title>Home</title>;
 }
 
 export const pageQuery = graphql`
