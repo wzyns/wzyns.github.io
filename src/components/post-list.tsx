@@ -15,9 +15,9 @@ export default function PostList({ posts }: { posts: any[] }) {
 function PostListItem({ post }: { post: any }) {
   return (
     <div className="mb-10">
-      <Link to={`/posts/${post.fields.slug}`}>
+      <Link to={post.fields.slug}>
         <p className="text-lg font-medium">{post.frontmatter.title}</p>
-        <p className="mt-1 text-neutral-500">{post.frontmatter.date}</p>
+        <p className="mt-3 text-neutral-500">{post.frontmatter.date}</p>
         <div
           className="mt-3"
           dangerouslySetInnerHTML={{ __html: post.excerpt }}
