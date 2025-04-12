@@ -17,9 +17,9 @@ function PostListItem({ post }: { post: any }) {
     <div className="mb-10">
       <Link to={`/posts/${post.fields.slug}`}>
         <p className="text-lg font-medium">{post.frontmatter.title}</p>
-        <p className="mt-2 text-neutral-500">{post.frontmatter.date}</p>
+        <p className="mt-1 text-neutral-500">{post.frontmatter.date}</p>
         <div
-          className="mt-2"
+          className="mt-3"
           dangerouslySetInnerHTML={{ __html: post.excerpt }}
         />
       </Link>
