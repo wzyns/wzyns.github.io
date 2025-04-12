@@ -25,7 +25,10 @@ export const pageQuery = graphql`
           title
           date(formatString: "MMMM DD, YYYY")
         }
-        excerpt
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 250, format: HTML)
       }
     }
   }
