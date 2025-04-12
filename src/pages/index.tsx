@@ -18,6 +18,7 @@ export const pageQuery = graphql`
   {
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       nodes {
+        id
         frontmatter {
           title
           date(formatString: "MMMM DD, YYYY")
@@ -26,6 +27,7 @@ export const pageQuery = graphql`
           slug
         }
         excerpt(pruneLength: 250, format: HTML, truncate: true)
+        html
       }
     }
   }
