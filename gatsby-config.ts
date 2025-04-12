@@ -12,15 +12,15 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: "markdown-posts",
+        path: `${__dirname}/content/`,
       },
       __key: "pages",
     },
+    "gatsby-transformer-remark",
   ],
 };
 
