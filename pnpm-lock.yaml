@@ -17,9 +17,6 @@ importers:
       gatsby:
         specifier: ^5.14.1
         version: 5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)
-      gatsby-plugin-google-gtag:
-        specifier: ^5.14.0
-        version: 5.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-plugin-mdx:
         specifier: ^5.14.1
         version: 5.14.1(@mdx-js/react@3.1.0(@types/react@18.3.20)(react@18.3.1))(gatsby-source-filesystem@5.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)))(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(graphql@16.10.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3072,14 +3069,6 @@ packages:
     engines: {parcel: 2.x}
     peerDependencies:
       '@parcel/core': ^2.0.0
-
-  gatsby-plugin-google-gtag@5.14.0:
-    resolution: {integrity: sha512-iXBQR4xjU20vR1b0zSE1McDxJZdm3pNxm8FMSvFIa9IswZskRgnjSYUBjGLMeGf8+t8y8rSTie94Ni0pJqf6dA==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      gatsby: ^5.0.0-next
-      react: ^18.0.0 || ^0.0.0
-      react-dom: ^18.0.0 || ^0.0.0
 
   gatsby-plugin-mdx@5.14.1:
     resolution: {integrity: sha512-BkrK10XqWkvYJNraSnPt/Ih/TmSjEzSWOEyWMSOJhHC+xpdqGakKKbkHButGQLMwC4W+v7jjQ3ZCbDQLXxZ5ZQ==}
@@ -9859,14 +9848,6 @@ snapshots:
       '@parcel/runtime-js': 2.8.3(@parcel/core@2.8.3)
       '@parcel/transformer-js': 2.8.3(@parcel/core@2.8.3)
       '@parcel/transformer-json': 2.8.3(@parcel/core@2.8.3)
-
-  gatsby-plugin-google-gtag@5.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      '@babel/runtime': 7.27.0
-      gatsby: 5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)
-      minimatch: 3.1.2
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   gatsby-plugin-mdx@5.14.1(@mdx-js/react@3.1.0(@types/react@18.3.20)(react@18.3.1))(gatsby-source-filesystem@5.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)))(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(graphql@16.10.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:

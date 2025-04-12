@@ -11,7 +11,6 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-postcss",
-    "gatsby-plugin-google-gtag",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
     {
