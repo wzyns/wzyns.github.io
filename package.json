@@ -2,11 +2,7 @@
   "name": "blog",
   "version": "1.0.0",
   "private": true,
-  "description": "blog",
-  "author": "w.shin",
-  "keywords": [
-    "gatsby"
-  ],
+  "author": "wish-in",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
