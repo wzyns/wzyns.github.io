@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
+import { Post } from "../models/post";
 
-export default function PostList({ posts }: { posts: any[] }) {
+export default function PostList({ posts }: { posts: Post[] }) {
   return (
     <ul>
       {posts.map((post) => (
@@ -12,7 +13,7 @@ export default function PostList({ posts }: { posts: any[] }) {
   );
 }
 
-function PostListItem({ post }: { post: any }) {
+function PostListItem({ post }: { post: Post }) {
   return (
     <div className="mb-10">
       <Link to={post.fields.slug}>

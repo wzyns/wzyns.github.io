@@ -2,8 +2,9 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Profile from "../components/profile";
 import PostList from "../components/post-list";
+import { Post } from "../models/post";
 
-export default function MainPage({ data }: { data: any }) {
+export default function MainPage({ data }: { data: FindAllQueryResult }) {
   const posts = data.allMarkdownRemark.nodes;
   return (
     <Layout>
@@ -29,3 +30,9 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+type FindAllQueryResult = {
+  allMarkdownRemark: {
+    nodes: Post[];
+  };
+};

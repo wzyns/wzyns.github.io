@@ -1,21 +1,20 @@
-import { graphql, StaticQueryDocument } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import { Post } from "../models/post";
 
 export default function PostPage({
   data: { markdownRemark: post },
 }: {
-  data: any;
+  data: FindOneQueryResult;
 }) {
-  const {
-    frontmatter: { title, date },
-    html,
-  } = post;
-
   return (
     <Layout>
-      <h2 className="text-lg font-medium">{title}</h2>
-      <p className="mt-3 text-neutral-500">{date}</p>
-      <div className="prose mt-3" dangerouslySetInnerHTML={{ __html: html }} />
+      <h2 className="text-lg font-medium">{post.frontmatter.title}</h2>
+      <p className="mt-3 text-neutral-500">{post.frontmatter.date}</p>
+      <div
+        className="prose mt-3"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
     </Layout>
   );
 }
@@ -32,3 +31,7 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+type FindOneQueryResult = {
+  markdownRemark: Post;
+};
