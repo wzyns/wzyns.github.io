@@ -26,6 +26,9 @@ importers:
       gatsby-plugin-sitemap:
         specifier: ^6.14.0
         version: 6.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      gatsby-remark-copy-linked-files:
+        specifier: ^6.14.0
+        version: 6.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))
       gatsby-remark-images:
         specifier: ^7.14.0
         version: 7.14.0(gatsby-plugin-sharp@5.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(graphql@16.10.0))(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))
@@ -3198,6 +3201,12 @@ packages:
       react: ^18.0.0 || ^0.0.0
       react-dom: ^18.0.0 || ^0.0.0
 
+  gatsby-remark-copy-linked-files@6.14.0:
+    resolution: {integrity: sha512-75s/NvjtgYNiFfThZ8cC6Awy0nP2Nyn5/zLISahIAbRaDfnJm3cTd2R9s+/n+t3y3HXXPwMHskCCLdOJAlGviQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      gatsby: ^5.0.0-next
+
   gatsby-remark-images@7.14.0:
     resolution: {integrity: sha512-P1FTQ5DEARWLh3AXXdGSjwAlA/mWWF7M5J/9szdTO6EmmF0+AnfvkIXAtNMtqGqXmbeSgriKvoXeIiyvIYeuRA==}
     engines: {node: '>=18.0.0'}
@@ -4626,6 +4635,9 @@ packages:
   path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
+
+  path-is-inside@1.0.2:
+    resolution: {integrity: sha512-DUWJr3+ULp4zXmol/SZkFf3JGsS9/SIv+Y3Rt93/UjPpDpklB5f1er4O3POIbUuUJ3FXgqte2Q7SrU6zAqwk8w==}
 
   path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -10212,6 +10224,20 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
+  gatsby-remark-copy-linked-files@6.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)):
+    dependencies:
+      '@babel/runtime': 7.27.0
+      cheerio: 1.0.0-rc.12
+      fs-extra: 11.3.0
+      gatsby: 5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)
+      is-relative-url: 3.0.0
+      lodash: 4.17.21
+      path-is-inside: 1.0.2
+      probe-image-size: 7.2.3
+      unist-util-visit: 2.0.3
+    transitivePeerDependencies:
+      - supports-color
+
   gatsby-remark-images@7.14.0(gatsby-plugin-sharp@5.14.0(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3))(graphql@16.10.0))(gatsby@5.14.3(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.3)):
     dependencies:
       '@babel/runtime': 7.27.0
@@ -11950,6 +11976,8 @@ snapshots:
   path-exists@4.0.0: {}
 
   path-is-absolute@1.0.1: {}
+
+  path-is-inside@1.0.2: {}
 
   path-key@3.1.1: {}
 

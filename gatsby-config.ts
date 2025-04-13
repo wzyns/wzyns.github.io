@@ -31,6 +31,7 @@ const config: GatsbyConfig = {
               maxWidth: 800,
             },
           },
+          "gatsby-remark-copy-linked-files", // for gif support / ignores png, jpg, jpeg, bmp, tiff by default
           "gatsby-remark-prismjs",
         ],
       },
