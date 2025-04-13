@@ -20,7 +20,12 @@ const config: GatsbyConfig = {
       },
       __key: "pages",
     },
-    "gatsby-transformer-remark",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-prismjs`],
+      },
+    },
   ],
 };
 
