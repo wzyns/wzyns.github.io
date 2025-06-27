@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "1.0.0",
   "private": true,
-  "author": "wish-in",
+  "author": "wzyns",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
@@ -11,7 +11,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit"
   },
-  "//pnpm": "check out https://github.com/wish-in/wish-in.github.io/issues/2",
+  "//pnpm": "check out https://github.com/wzyns/wzyns.github.io/issues/2",
   "pnpm": {
     "onlyBuiltDependencies": [
       "sharp"
