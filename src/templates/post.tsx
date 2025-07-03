@@ -10,7 +10,7 @@ export default function PostPage({
   return (
     <Layout>
       <h2 className="text-lg font-medium">{post.frontmatter.title}</h2>
-      <p className="mt-3 text-neutral-500">{post.frontmatter.date}</p>
+      <p className="mt-1 text-neutral-500">{post.frontmatter.date}</p>
       <div
         className="prose mt-3"
         dangerouslySetInnerHTML={{ __html: post.html }}

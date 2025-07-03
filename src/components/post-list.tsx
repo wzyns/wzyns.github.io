@@ -17,11 +17,11 @@ function PostListItem({ post }: { post: Post }) {
   const isTruncated = post.excerpt.length < post.html.length;
 
   return (
-    <div className="mb-10">
+    <div className="mb-12">
       <Link to={post.fields.slug}>
         <p className="text-lg font-medium">{post.frontmatter.title}</p>
       </Link>
-      <p className="mt-3 text-neutral-500">{post.frontmatter.date}</p>
+      <p className="mt-1 text-neutral-500">{post.frontmatter.date}</p>
       <div
         className="mt-3"
         dangerouslySetInnerHTML={{ __html: post.excerpt }}
