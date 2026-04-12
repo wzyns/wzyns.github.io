@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getAllPaths, isDirectory, getDirectoryEntries, getPost } from "@/lib/posts";
 import { formatDate } from "@/lib/date";
 import { PageShell } from "@/components/page-shell";
@@ -9,6 +10,19 @@ export async function generateStaticParams() {
 }
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const fileName = slug[slug.length - 1];
+  if (!isDirectory(slug)) {
+    return { title: `${fileName} — wzyns` };
+  }
+  return {};
+}
 
 export default async function SlugPage({
   params,
