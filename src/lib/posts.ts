@@ -11,7 +11,6 @@ export interface FileEntry {
   path: string;
   isDirectory: boolean;
   modifiedAt: Date;
-  children?: FileEntry[];
 }
 
 export interface Post {
@@ -22,7 +21,7 @@ export interface Post {
   modifiedAt: Date;
 }
 
-export function getDirectoryTree(dirPath: string[] = []): FileEntry[] {
+export function getDirectoryEntries(dirPath: string[] = []): FileEntry[] {
   const fullPath = path.join(postsDirectory, ...dirPath);
   const entries = fs.readdirSync(fullPath, { withFileTypes: true });
 
@@ -32,41 +31,40 @@ export function getDirectoryTree(dirPath: string[] = []): FileEntry[] {
       const entryPath = path.join(fullPath, entry.name);
       const stat = fs.statSync(entryPath);
       const segments = [...dirPath, entry.name];
-      const slugPath = segments.join("/");
 
-      const result: FileEntry = {
+      return {
         name: entry.name,
-        path: slugPath,
+        path: segments.join("/"),
         isDirectory: entry.isDirectory(),
         modifiedAt: stat.mtime,
       };
-
-      if (entry.isDirectory()) {
-        result.children = getDirectoryTree(segments);
-      }
-
-      return result;
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function getAllPostSlugs(): string[][] {
-  const slugs: string[][] = [];
+export function getAllPaths(): { slug: string[]; isDirectory: boolean }[] {
+  const paths: { slug: string[]; isDirectory: boolean }[] = [];
 
   function walk(dir: string, segments: string[]) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
       const entrySegments = [...segments, entry.name];
       if (entry.isDirectory()) {
+        paths.push({ slug: entrySegments, isDirectory: true });
         walk(path.join(dir, entry.name), entrySegments);
       } else if (entry.name.endsWith(".md")) {
-        slugs.push(entrySegments);
+        paths.push({ slug: entrySegments, isDirectory: false });
       }
     }
   }
 
   walk(postsDirectory, []);
-  return slugs;
+  return paths;
+}
+
+export function isDirectory(slug: string[]): boolean {
+  const fullPath = path.join(postsDirectory, ...slug);
+  return fs.statSync(fullPath).isDirectory();
 }
 
 export async function getPost(slug: string[]): Promise<Post> {
