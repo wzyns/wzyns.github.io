@@ -25,3 +25,21 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+.prose .heading-anchor {
+  position: absolute;
+  left: -1em;
+  opacity: 0.3;
+  color: var(--color-foreground);
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 0.8em;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+}
+
+.prose .heading-anchor:hover {
+  opacity: 0.6;
+}

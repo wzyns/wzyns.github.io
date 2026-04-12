@@ -1,8 +1,12 @@
 import fs from "fs";
 import path from "path";
-import { remark } from "remark";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeStringify from "rehype-stringify";
 import { remarkRewriteImages } from "./remark-rewrite-images";
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -73,10 +77,23 @@ export async function getPost(slug: string[]): Promise<Post> {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const stat = fs.statSync(filePath);
 
-  const result = await remark()
+  const result = await unified()
+    .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRewriteImages(slug))
-    .use(remarkHtml)
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings, {
+      behavior: "prepend",
+      properties: { className: ["heading-anchor"], ariaHidden: true, tabIndex: -1 },
+      content: {
+        type: "element",
+        tagName: "span",
+        properties: { className: ["heading-anchor-icon"] },
+        children: [{ type: "text", value: "#" }],
+      },
+    })
+    .use(rehypeStringify)
     .process(fileContent);
 
   return {
