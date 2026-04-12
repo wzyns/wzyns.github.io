@@ -45,7 +45,7 @@ export default async function SlugPage({
         {formatDate(post.createdAt)}
       </p>
       <article
-        className="prose prose-zinc dark:prose-invert max-w-none"
+        className="prose prose-zinc dark:prose-invert max-w-none font-sans"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </PageShell>
