@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "b10g",
+  title: "wzyns",
   description: "A file-explorer style blog",
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-zinc-50 dark:bg-zinc-950">
         <div className="flex-1 flex flex-col">{children}</div>
         <footer className="py-6 text-center text-sm text-zinc-400 dark:text-zinc-600">
-          © 2025 b10g. All rights reserved.
+          © 2025 wzyns. All rights reserved.
         </footer>
       </body>
     </html>
