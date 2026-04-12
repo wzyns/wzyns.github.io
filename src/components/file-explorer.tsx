@@ -11,7 +11,13 @@ function formatDate(date: Date): string {
   });
 }
 
-export function FileExplorer({ entries }: { entries: FileEntry[] }) {
+export function FileExplorer({
+  entries,
+  parentHref,
+}: {
+  entries: FileEntry[];
+  parentHref?: string;
+}) {
   return (
     <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
       <table className="w-full text-sm">
@@ -22,6 +28,19 @@ export function FileExplorer({ entries }: { entries: FileEntry[] }) {
           </tr>
         </thead>
         <tbody>
+          {parentHref != null && (
+            <tr className="border-b border-zinc-100 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/50">
+              <td className="px-4 py-2.5">
+                <Link
+                  href={parentHref}
+                  className="text-zinc-900 hover:text-blue-600 dark:text-zinc-100 dark:hover:text-blue-400"
+                >
+                  📁 ..
+                </Link>
+              </td>
+              <td />
+            </tr>
+          )}
           {entries.map((entry) => (
             <tr
               key={entry.path}

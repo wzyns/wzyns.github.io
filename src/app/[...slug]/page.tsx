@@ -36,15 +36,7 @@ export default async function SlugPage({
           <h1 className="mb-8 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
             /posts/{slug.join("/")}
           </h1>
-          <div className="mb-4">
-            <Link
-              href={parentHref}
-              className="text-sm text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
-            >
-              ← ..
-            </Link>
-          </div>
-          <FileExplorer entries={entries} />
+          <FileExplorer entries={entries} parentHref={parentHref} />
         </main>
       </div>
     );
