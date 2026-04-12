@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceCodePro = Source_Code_Pro({
+  variable: "--font-source-code-pro",
   subsets: ["latin"],
 });
 
@@ -18,10 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${geistMono.variable} h-full antialiased`}>
+    <html lang="ko" className={`${sourceCodePro.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-zinc-50 dark:bg-zinc-950">
         <div className="flex-1 flex flex-col">{children}</div>
-
       </body>
     </html>
   );
