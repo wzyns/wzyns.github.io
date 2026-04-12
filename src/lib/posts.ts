@@ -3,6 +3,7 @@ import path from "path";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
+import { remarkRewriteImages } from "./remark-rewrite-images";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -72,7 +73,11 @@ export async function getPost(slug: string[]): Promise<Post> {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const stat = fs.statSync(filePath);
 
-  const result = await remark().use(remarkGfm).use(remarkHtml).process(fileContent);
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkRewriteImages(slug))
+    .use(remarkHtml)
+    .process(fileContent);
 
   return {
     slug,
