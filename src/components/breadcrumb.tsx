@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export function Breadcrumb({ segments }: { segments: string[] }) {
   return (
-    <nav className="mb-8 flex items-center gap-1 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+    <nav className="mb-4 flex items-center gap-1.5 text-base text-zinc-600 dark:text-zinc-400">
       <Link
         href="/"
-        className="hover:text-blue-600 dark:hover:text-blue-400"
+        className="font-semibold text-zinc-900 hover:underline dark:text-zinc-100"
       >
         /
       </Link>
@@ -14,19 +14,17 @@ export function Breadcrumb({ segments }: { segments: string[] }) {
         const isLast = i === segments.length - 1;
 
         return (
-          <span key={href} className="flex items-center gap-1">
+          <span key={href} className="flex items-center gap-1.5">
+            {i > 0 && <span className="text-zinc-400 dark:text-zinc-600">/</span>}
             {isLast ? (
-              <span>{segment}</span>
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">{segment}</span>
             ) : (
-              <>
-                <Link
-                  href={href}
-                  className="hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  {segment}
-                </Link>
-                <span className="text-zinc-400 dark:text-zinc-600">/</span>
-              </>
+              <Link
+                href={href}
+                className="text-blue-600 hover:underline dark:text-blue-400"
+              >
+                {segment}
+              </Link>
             )}
           </span>
         );
