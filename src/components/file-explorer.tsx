@@ -1,15 +1,6 @@
 import Link from "next/link";
 import type { FileEntry } from "@/lib/posts";
-
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
+import { formatDate } from "@/lib/date";
 
 export function FileExplorer({
   entries,

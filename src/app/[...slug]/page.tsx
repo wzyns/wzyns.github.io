@@ -1,4 +1,5 @@
 import { getAllPaths, isDirectory, getDirectoryEntries, getPost } from "@/lib/posts";
+import { formatDate } from "@/lib/date";
 import { PageShell } from "@/components/page-shell";
 import { FileExplorer } from "@/components/file-explorer";
 
@@ -8,16 +9,6 @@ export async function generateStaticParams() {
 }
 
 export const dynamicParams = false;
-
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
 
 export default async function SlugPage({
   params,
