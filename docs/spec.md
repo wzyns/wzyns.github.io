@@ -10,10 +10,6 @@
 
 ## Pages
 
-### 0. Default Layout (Applies to all pages)
-
-1. Footer : 가운데 정렬된 Copyright 문구
-
 ### 1. Home (/)
 
 1. 파일 탐색기 형태의 뷰를 통해 포스트를 탐색할 수 있습니다.
