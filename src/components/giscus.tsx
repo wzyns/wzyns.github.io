@@ -19,7 +19,6 @@ export function Giscus() {
     script.setAttribute("data-input-position", "bottom");
     script.setAttribute("data-theme", "preferred_color_scheme");
     script.setAttribute("data-lang", "en");
-    script.setAttribute("data-loading", "lazy");
     script.crossOrigin = "anonymous";
     script.async = true;
 
