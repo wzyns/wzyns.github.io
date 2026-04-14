@@ -6,10 +6,20 @@ import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeShiki from "@shikijs/rehype";
 import rehypeStringify from "rehype-stringify";
+import { codeToHtml } from "shiki";
 import { remarkRewriteImages } from "./remark-rewrite-images";
 
 const postsDirectory = path.join(process.cwd(), "posts");
+
+const imageExtensions = new Set([
+  ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".avif", ".ico",
+]);
+
+function isImageFile(name: string): boolean {
+  return imageExtensions.has(path.extname(name).toLowerCase());
+}
 
 export interface FileEntry {
   name: string;
@@ -31,7 +41,7 @@ export function getDirectoryEntries(dirPath: string[] = []): FileEntry[] {
   const entries = fs.readdirSync(fullPath, { withFileTypes: true });
 
   return entries
-    .filter((entry) => entry.isDirectory() || entry.name.endsWith(".md"))
+    .filter((entry) => entry.isDirectory() || !isImageFile(entry.name))
     .map((entry) => {
       const entryPath = path.join(fullPath, entry.name);
       const stat = fs.statSync(entryPath);
@@ -57,7 +67,7 @@ export function getAllPaths(): { slug: string[]; isDirectory: boolean }[] {
       if (entry.isDirectory()) {
         paths.push({ slug: entrySegments, isDirectory: true });
         walk(path.join(dir, entry.name), entrySegments);
-      } else if (entry.name.endsWith(".md")) {
+      } else if (!isImageFile(entry.name)) {
         paths.push({ slug: entrySegments, isDirectory: false });
       }
     }
@@ -70,6 +80,43 @@ export function getAllPaths(): { slug: string[]; isDirectory: boolean }[] {
 export function isDirectory(slug: string[]): boolean {
   const fullPath = path.join(postsDirectory, ...slug);
   return fs.statSync(fullPath).isDirectory();
+}
+
+export function getFileContent(slug: string[]): {
+  fileName: string;
+  content: string;
+  createdAt: Date;
+  modifiedAt: Date;
+} {
+  const filePath = path.join(postsDirectory, ...slug);
+  const content = fs.readFileSync(filePath, "utf-8");
+  const stat = fs.statSync(filePath);
+  return {
+    fileName: slug[slug.length - 1],
+    content,
+    createdAt: stat.birthtime,
+    modifiedAt: stat.mtime,
+  };
+}
+
+export function isMarkdown(slug: string[]): boolean {
+  return slug[slug.length - 1].endsWith(".md");
+}
+
+export async function highlightCode(code: string, fileName: string): Promise<string> {
+  const ext = path.extname(fileName).toLowerCase().slice(1);
+  const langMap: Record<string, string> = {
+    js: "javascript", ts: "typescript", jsx: "jsx", tsx: "tsx",
+    py: "python", rb: "ruby", rs: "rust", yml: "yaml",
+    sh: "bash", zsh: "bash", md: "markdown",
+  };
+  const lang = langMap[ext] || ext;
+
+  try {
+    return await codeToHtml(code, { lang, theme: "github-dark" });
+  } catch {
+    return await codeToHtml(code, { lang: "text", theme: "github-dark" });
+  }
 }
 
 export async function getPost(slug: string[]): Promise<Post> {
@@ -93,6 +140,7 @@ export async function getPost(slug: string[]): Promise<Post> {
         children: [{ type: "text", value: "#" }],
       },
     })
+    .use(rehypeShiki, { theme: "github-dark" })
     .use(rehypeStringify)
     .process(fileContent);
 

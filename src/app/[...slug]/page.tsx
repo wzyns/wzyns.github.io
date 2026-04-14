@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllPaths, isDirectory, getDirectoryEntries, getPost } from "@/lib/posts";
+import { getAllPaths, isDirectory, isMarkdown, getDirectoryEntries, getPost, getFileContent, highlightCode } from "@/lib/posts";
 import { formatDate } from "@/lib/date";
 import { PageShell } from "@/components/page-shell";
 import { FileExplorer } from "@/components/file-explorer";
@@ -42,16 +42,33 @@ export default async function SlugPage({
     );
   }
 
-  const post = await getPost(slug);
+  if (isMarkdown(slug)) {
+    const post = await getPost(slug);
+
+    return (
+      <PageShell segments={slug}>
+        <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
+          {formatDate(post.createdAt)}
+        </p>
+        <article
+          className="prose prose-zinc dark:prose-invert max-w-none font-sans"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </PageShell>
+    );
+  }
+
+  const file = getFileContent(slug);
+  const highlighted = await highlightCode(file.content, file.fileName);
 
   return (
     <PageShell segments={slug}>
       <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
-        {formatDate(post.createdAt)}
+        {formatDate(file.createdAt)}
       </p>
-      <article
-        className="prose prose-zinc dark:prose-invert max-w-none font-sans"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+      <div
+        className="overflow-x-auto rounded-md text-sm"
+        dangerouslySetInnerHTML={{ __html: highlighted }}
       />
     </PageShell>
   );
