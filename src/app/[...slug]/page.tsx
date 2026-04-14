@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!isDirectory(slug)) {
     return { title: `${fileName} — wzyns` };
   }
-  return {};
+  return { title: `${fileName} — wzyns` };
 }
 
 export default async function SlugPage({
