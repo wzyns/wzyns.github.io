@@ -3,6 +3,7 @@ import { getAllPaths, isDirectory, isMarkdown, getDirectoryEntries, getPost, get
 import { PageShell } from "@/components/page-shell";
 import { FileExplorer } from "@/components/file-explorer";
 import { LocalDate } from "@/components/local-date";
+import { Giscus } from "@/components/giscus";
 
 export async function generateStaticParams() {
   const paths = getAllPaths();
@@ -54,6 +55,7 @@ export default async function SlugPage({
           className="prose prose-zinc dark:prose-invert max-w-none font-sans"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        <Giscus />
       </PageShell>
     );
   }
@@ -70,6 +72,7 @@ export default async function SlugPage({
         className="overflow-x-auto rounded-md text-sm"
         dangerouslySetInnerHTML={{ __html: highlighted }}
       />
+      <Giscus />
     </PageShell>
   );
 }
