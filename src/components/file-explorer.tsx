@@ -61,17 +61,17 @@ export function FileExplorer({
   parentHref?: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-md border border-zinc-300 dark:border-zinc-700">
+    <div className="overflow-hidden rounded-md border border-zinc-300 dark:border-[#3d444d]">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-zinc-100 border-b border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700">
+          <tr className="bg-zinc-100 border-b border-zinc-300 dark:bg-[#151b23] dark:border-[#3d444d]">
             <th className="px-4 py-2.5 text-left font-semibold text-zinc-700 dark:text-zinc-300">Name</th>
             <th className="px-4 py-2.5 text-right font-semibold text-zinc-700 dark:text-zinc-300">Last modified</th>
           </tr>
         </thead>
-        <tbody className="bg-white dark:bg-zinc-900">
+        <tbody className="bg-white dark:bg-[#0d1117]">
           {parentHref != null && (
-            <tr className="border-b border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60">
+            <tr className="border-b border-zinc-200 hover:bg-zinc-50 dark:border-[#3d444d] dark:hover:bg-[#151b23]">
               <td className="px-4 py-2" colSpan={2}>
                 <Link href={parentHref} className="text-zinc-700 hover:underline dark:text-zinc-300">
                   <FolderIcon />..
@@ -82,7 +82,7 @@ export function FileExplorer({
           {entries.map((entry) => (
             <tr
               key={entry.path}
-              className="border-b border-zinc-200 last:border-b-0 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60"
+              className="border-b border-zinc-200 last:border-b-0 hover:bg-zinc-50 dark:border-[#3d444d] dark:hover:bg-[#151b23]"
             >
               <td className="px-4 py-2">
                 <Link

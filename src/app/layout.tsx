@@ -18,8 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${sourceCodePro.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-zinc-50 dark:bg-zinc-950">
+    <html lang="ko" className={`${sourceCodePro.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches))document.documentElement.classList.add("dark")})()`,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-zinc-50 dark:bg-[#151b23]">
         <div className="flex-1 flex flex-col">{children}</div>
       </body>
     </html>
