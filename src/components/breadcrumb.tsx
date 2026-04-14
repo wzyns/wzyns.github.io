@@ -7,7 +7,7 @@ export function Breadcrumb({ segments }: { segments: string[] }) {
         href="/"
         className="font-semibold text-zinc-900 hover:underline dark:text-zinc-100"
       >
-        /
+        ~
       </Link>
       {segments.map((segment, i) => {
         const href = `/${segments.slice(0, i + 1).join("/")}`;
@@ -15,7 +15,7 @@ export function Breadcrumb({ segments }: { segments: string[] }) {
 
         return (
           <span key={href} className="flex items-center gap-1.5">
-            {i > 0 && <span className="text-zinc-400 dark:text-zinc-600">/</span>}
+            <span className="text-zinc-400 dark:text-zinc-600">/</span>
             {isLast ? (
               <span className="font-semibold text-zinc-900 dark:text-zinc-100">{segment}</span>
             ) : (
