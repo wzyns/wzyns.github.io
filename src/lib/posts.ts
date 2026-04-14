@@ -84,7 +84,7 @@ export async function getPost(slug: string[]): Promise<Post> {
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
-      behavior: "prepend",
+      behavior: "append",
       properties: { className: ["heading-anchor"], ariaHidden: true, tabIndex: -1 },
       content: {
         type: "element",
