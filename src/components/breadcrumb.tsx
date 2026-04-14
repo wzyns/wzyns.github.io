@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Breadcrumb({ segments }: { segments: string[] }) {
   return (
-    <nav className="mb-1.5 flex items-center gap-1.5 text-base text-zinc-600 dark:text-zinc-400">
+    <nav className="mb-4 flex items-center gap-1.5 text-base text-zinc-600 dark:text-zinc-400">
       <Link
         href="/"
         className="font-semibold text-zinc-900 hover:underline dark:text-zinc-100"
