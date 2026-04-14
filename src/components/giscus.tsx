@@ -6,6 +6,7 @@ export function Giscus() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
     script.setAttribute("data-repo", "wzyns/wzyns.github.io");
@@ -17,7 +18,7 @@ export function Giscus() {
     script.setAttribute("data-reactions-enabled", "1");
     script.setAttribute("data-emit-metadata", "0");
     script.setAttribute("data-input-position", "bottom");
-    script.setAttribute("data-theme", "preferred_color_scheme");
+    script.setAttribute("data-theme", isDark ? "dark" : "light");
     script.setAttribute("data-lang", "en");
     script.crossOrigin = "anonymous";
     script.async = true;

@@ -18,6 +18,12 @@ function getSystemTheme(): Theme {
 
 function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
+  // Sync theme with giscus iframe, which can't detect parent page theme changes on its own
+  const giscusFrame = document.querySelector<HTMLIFrameElement>("iframe.giscus-frame");
+  giscusFrame?.contentWindow?.postMessage(
+    { giscus: { setConfig: { theme: theme === "dark" ? "dark" : "light" } } },
+    "https://giscus.app",
+  );
 }
 
 export function ThemeToggle() {
