@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { FileEntry } from "@/lib/posts";
-import { formatDate } from "@/lib/date";
+import { LocalDate } from "@/components/local-date";
 
 function FolderIcon() {
   return (
@@ -59,7 +59,7 @@ export function FileExplorer({
                 </Link>
               </td>
               <td className="px-4 py-2 text-right text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
-                {formatDate(entry.modifiedAt)}
+                <LocalDate date={entry.modifiedAt.toISOString()} />
               </td>
             </tr>
           ))}

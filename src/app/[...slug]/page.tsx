@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getAllPaths, isDirectory, isMarkdown, getDirectoryEntries, getPost, getFileContent, highlightCode } from "@/lib/posts";
-import { formatDate } from "@/lib/date";
 import { PageShell } from "@/components/page-shell";
 import { FileExplorer } from "@/components/file-explorer";
+import { LocalDate } from "@/components/local-date";
 
 export async function generateStaticParams() {
   const paths = getAllPaths();
@@ -48,7 +48,7 @@ export default async function SlugPage({
     return (
       <PageShell segments={slug}>
         <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
-          {formatDate(post.createdAt)}
+          <LocalDate date={post.createdAt.toISOString()} />
         </p>
         <article
           className="prose prose-zinc dark:prose-invert max-w-none font-sans"
@@ -64,7 +64,7 @@ export default async function SlugPage({
   return (
     <PageShell segments={slug}>
       <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
-        {formatDate(file.createdAt)}
+        <LocalDate date={file.createdAt.toISOString()} />
       </p>
       <div
         className="overflow-x-auto rounded-md text-sm"
